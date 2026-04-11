@@ -1,0 +1,19 @@
+﻿# Getting started
+
+## Install via git URL
+
+https://github.com/UnlimitedFairytales/Uft.Staffroll.git?path=Assets/Uft.Staffroll
+
+## Setup dependencies
+
+- com.unity.ugui 2.0.0
+    - Import TMP Essentials
+- https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask
+- https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676
+    - Setup DOTween
+    - Create ASMDEF
+    - Project Settings > Player > Scripting Define Symbols > UNITASK_DOTWEEN_SUPPORT
+
+## Sample
+
+- Project Settings > Player > Active Input Handling > Both
