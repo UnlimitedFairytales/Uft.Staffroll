@@ -19,6 +19,17 @@ namespace Uft.Staffroll
             return null;
         }
 
+        /// <summary>IgnoreCaseで子要素を1つ取得する。存在しない場合はnullを返す。</summary>
+        public static XElement? GetElementIgnoreCase(this XElement el, string name)
+        {
+            foreach (var child in el.Elements())
+            {
+                if (string.Equals(child.Name.LocalName, name, StringComparison.OrdinalIgnoreCase))
+                    return child;
+            }
+            return null;
+        }
+
         /// <summary>IgnoreCaseで子要素を取得する。</summary>
         public static IEnumerable<XElement> GetElementsIgnoreCase(this XElement el, string name)
         {

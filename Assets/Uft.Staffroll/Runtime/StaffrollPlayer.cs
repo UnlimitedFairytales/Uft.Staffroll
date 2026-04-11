@@ -11,11 +11,11 @@ namespace Uft.Staffroll
 {
     public class StaffrollPlayer : MonoBehaviour
     {
-        [SerializeField] RectTransform _contentRoot;
+        [SerializeField] RectTransform? _contentRoot;
 
         [Header("Prototype")]
-        [SerializeField] RndBlock _blockPrototype;
-        [SerializeField] RndImg   _imgPrototype;
+        [SerializeField] RndBlock? _blockPrototype;
+        [SerializeField] RndImg?   _imgPrototype;
 
         [Header("Layout")]
         [SerializeField] float _fontSize   = 32f;
@@ -42,9 +42,9 @@ namespace Uft.Staffroll
 
         void Awake()
         {
+            if (this._contentRoot == null) throw new UnassignedReferenceException(nameof(this._contentRoot));
             if (this._blockPrototype == null) throw new UnassignedReferenceException(nameof(this._blockPrototype));
             if (this._imgPrototype == null) throw new UnassignedReferenceException(nameof(this._imgPrototype));
-            if (this._contentRoot == null) throw new UnassignedReferenceException(nameof(this._contentRoot));
 
             this._elementParser = new ElementParser(64, 16);
             this._rendererMap.Add(typeof(BrContent), new RndNewLine());
@@ -67,6 +67,8 @@ namespace Uft.Staffroll
 
         public void Play(string xmlText)
         {
+            if (this._contentRoot == null) throw new UnassignedReferenceException(nameof(this._contentRoot));
+
             this._totalContentHeight = this.BuildUI(xmlText);
 
             var viewHeight = this.GetViewportHeight();
@@ -80,6 +82,8 @@ namespace Uft.Staffroll
         /// </summary>
         public void Browse(string xmlText)
         {
+            if (this._contentRoot == null) throw new UnassignedReferenceException(nameof(this._contentRoot));
+
             this._totalContentHeight = this.BuildUI(xmlText);
             this._contentRoot.anchoredPosition = new Vector2(0f, this.BrowseMinY());
         }
@@ -92,6 +96,8 @@ namespace Uft.Staffroll
         /// </summary>
         public void Scroll(float delta)
         {
+            if (this._contentRoot == null) throw new UnassignedReferenceException(nameof(this._contentRoot));
+
             var current = this._contentRoot.anchoredPosition.y;
             var clamped = Mathf.Clamp(current + delta, this.BrowseMinY(), this.BrowseMaxY());
             this._contentRoot.anchoredPosition = new Vector2(0f, clamped);
@@ -105,17 +111,19 @@ namespace Uft.Staffroll
 
         float BuildUI(string xmlText)
         {
+            var (head, contents) = this._elementParser.Parse(xmlText);
+
             var ctx = new StaffrollRenderContext
             {
                 FontA      = this._fontA,
                 FontB      = this._fontB,
                 FontC      = this._fontC,
-                FontSize   = this._fontSize,
-                LineHeight = this._lineHeight,
-                BrHeight   = this._brHeight,
-                RowWidth   = this._rowWidth,
+                FontSize   = head.FontSize   ?? this._fontSize,
+                LineHeight = head.LineHeight ?? this._lineHeight,
+                BrHeight   = head.BrHeight  ?? this._brHeight,
+                RowWidth   = head.RowWidth  ?? this._rowWidth,
             };
-            var contents = this._elementParser.Parse(xmlText);
+            this._scrollSpeed = head.ScrollSpeed ?? this._scrollSpeed;
 
             float y     = 0f;
             bool  first = true;

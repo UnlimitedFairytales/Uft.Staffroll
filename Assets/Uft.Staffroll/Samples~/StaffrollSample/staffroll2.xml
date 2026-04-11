@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<staffroll>
+	<head>
+		<!-- layout: font-size、line-height、br-height、row-width（省略時はStaffrollPlayerのSerializeField値を使用） -->
+		<layout font-size="48" line-height="100" br-height="100" row-width="1000" />
+		<!-- scroll: speed（省略時はStaffrollPlayerのSerializeField値を使用） -->
+		<scroll speed="160" />
+	</head>
+	<body>
+		<!-- div、br、img で記述-->
+		<!-- class は、"2blocks"、"3blocks"、"caption-2blocks"、"caption" -->
+		<!-- font は、"a"、"b"、"c" -->
+		<div>開発協力</div>
+		<br/>
+		<div>〇〇株式会社</div>
+		<div>株式会社〇〇</div>
+		<br/>
+		<br/>
+		<div>開発スタッフ</div>
+		<br/>
+		<div class="caption-2blocks">
+			<div class="caption">プログラマー</div>
+			<div>山田太郎</div>
+			<div>山田花子</div>
+		</div>
+		<br/>
+		<div class="caption-2blocks">
+			<div class="caption">デザイナー</div>
+			<div>佐藤一郎</div>
+			<div>佐藤次郎（株式会社〇〇）</div>
+		</div>
+		<br/>
+		<div class="caption-2blocks">
+			<div class="caption">キャラクター名</div>
+			<div>鈴木梅子</div>
+			<div>鈴木竹子</div>
+			<div>鈴木松子</div>
+		</div>
+		<br/>
+		<br/>
+		<div>クラウドファインディングのみなさま</div>
+		<div class="3blocks">
+			<div>あいうえおかきくけこ</div>
+			<div>あいうえおかきくけこ</div>
+			<div>あいうえおかきくけこ</div>
+			<div>あいうえおかきくけこ</div>
+			<div>あいうえおかきくけこ</div>
+			<div>あいうえおかきくけこ</div>
+		</div>
+		<br/>
+		<br/>
+		<div>企画・著作</div>
+		<br/>
+		<img src="img720x300" />
+		<div>Staff roll2</div>
+		<div font="a">Staff roll2</div>
+	</body>
+</staffroll>
