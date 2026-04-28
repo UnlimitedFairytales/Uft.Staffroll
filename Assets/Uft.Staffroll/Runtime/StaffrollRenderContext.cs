@@ -13,6 +13,7 @@ namespace Uft.Staffroll
         public float LineHeight { get; set; } = 48f;
         public float BrHeight { get; set; } = 24f;
         public float RowWidth { get; set; } = 1200f;
+        public float TwoColumnGap { get; set; } = 48f;
 
         /// <summary>"a","b","c" キーでフォントを解決する。その他はnull。</summary>
         public TMP_FontAsset? ResolveFont(string? key) => key switch
