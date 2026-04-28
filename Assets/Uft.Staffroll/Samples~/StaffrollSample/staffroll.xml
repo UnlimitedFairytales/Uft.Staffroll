@@ -13,12 +13,12 @@
 	<br/>
 	<div class="caption-2blocks">
 		<div class="caption">プログラマー</div>
-		<div>山田太郎</div>
+		<div><b>山田太郎</b></div>
 		<div>山田花子</div>
 	</div>
 	<br/>
 	<div class="caption-2blocks">
-		<div class="caption">デザイナー</div>
+		<div class="caption"><![CDATA[<color="red">デザイナー</color>]]></div>
 		<div>佐藤一郎</div>
 		<div>佐藤次郎（株式会社〇〇）</div>
 	</div>

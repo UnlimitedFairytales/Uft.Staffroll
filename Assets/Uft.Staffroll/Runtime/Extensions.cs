@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Uft.Staffroll
@@ -29,6 +30,10 @@ namespace Uft.Staffroll
             }
             return null;
         }
+
+        /// <summary>子ノードをXML文字列として結合して返す。TMProのrichTextタグ（&lt;b&gt;等）をそのまま保持する。CDATAセクションは中身のみ展開する。</summary>
+        public static string InnerXml(this XElement el) =>
+            string.Concat(el.Nodes().Select(n => n is XCData cdata ? cdata.Value : n.ToString()));
 
         /// <summary>IgnoreCaseで子要素を取得する。</summary>
         public static IEnumerable<XElement> GetElementsIgnoreCase(this XElement el, string name)
