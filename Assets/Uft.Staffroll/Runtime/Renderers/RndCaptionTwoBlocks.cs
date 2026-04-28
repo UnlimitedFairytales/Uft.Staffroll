@@ -30,12 +30,12 @@ namespace Uft.Staffroll.Renderers
 
                 // 左列: 1行目のみキャプション、以降は空セル
                 var caption = Object.Instantiate(this._blockPrototype, row);
-                caption.SetText(i == 0 ? casted.Caption : string.Empty, ctx.ResolveFont(casted.FontKey), TextAlignmentOptions.Right);
+                caption.SetText(i == 0 ? casted.Caption : string.Empty, ctx.ResolveFont(casted.FontKey), TextAlignmentOptions.Right, ctx.FontSize);
 
                 // 右列: アイテム
                 var text = casted.Items[i];
                 var block = Object.Instantiate(this._blockPrototype, row);
-                block.SetText(text, ctx.ResolveFont(casted.FontKey), TextAlignmentOptions.Left);
+                block.SetText(text, ctx.ResolveFont(casted.FontKey), TextAlignmentOptions.Left, ctx.FontSize);
 
                 y -= ctx.LineHeight;
             }
