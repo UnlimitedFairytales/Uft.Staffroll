@@ -2,7 +2,7 @@
 <staffroll>
 	<head>
 		<!-- layout: font-size、line-height、br-height、row-width（省略時はStaffrollPlayerのSerializeField値を使用） -->
-		<layout font-size="48" line-height="100" br-height="100" row-width="1000" />
+		<layout font-size="48" line-height="100" br-height="100" row-width="1000" two-column-gap="200" />
 		<!-- scroll: speed（省略時はStaffrollPlayerのSerializeField値を使用） -->
 		<scroll speed="160" />
 	</head>

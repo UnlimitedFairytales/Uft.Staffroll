@@ -11,6 +11,7 @@ namespace Uft.Staffroll
         public float? LineHeight { get; set; }
         public float? BrHeight { get; set; }
         public float? RowWidth { get; set; }
+        public float? TwoColumnGap { get; set; }
         public float? ScrollSpeed { get; set; }
 
         public void Parse(XElement headEl)
@@ -22,6 +23,7 @@ namespace Uft.Staffroll
                 this.LineHeight = ParseFloat(layoutEl.GetAttrIgnoreCase("line-height"));
                 this.BrHeight = ParseFloat(layoutEl.GetAttrIgnoreCase("br-height"));
                 this.RowWidth = ParseFloat(layoutEl.GetAttrIgnoreCase("row-width"));
+                this.TwoColumnGap = ParseFloat(layoutEl.GetAttrIgnoreCase("two-column-gap"));
             }
 
             var scrollEl = headEl.GetElementIgnoreCase("scroll");

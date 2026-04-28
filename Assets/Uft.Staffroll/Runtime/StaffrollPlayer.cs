@@ -123,7 +123,7 @@ namespace Uft.Staffroll
                 LineHeight = head.LineHeight ?? this._lineHeight,
                 BrHeight   = head.BrHeight  ?? this._brHeight,
                 RowWidth   = head.RowWidth  ?? this._rowWidth,
-                TwoColumnGap = this._twoColumnGap,
+                TwoColumnGap = head.TwoColumnGap ?? this._twoColumnGap,
             };
             this._scrollSpeed = head.ScrollSpeed ?? this._scrollSpeed;
 
