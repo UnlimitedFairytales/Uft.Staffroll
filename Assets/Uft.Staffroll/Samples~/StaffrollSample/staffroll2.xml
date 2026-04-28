@@ -31,10 +31,20 @@
 		</div>
 		<br/>
 		<div class="caption-2blocks">
-			<div class="caption">キャラクター名</div>
+			<div class="caption">キャラクター名。横に場合にどうなるかのチェックが必要なため長い。</div>
 			<div>鈴木梅子</div>
 			<div>鈴木竹子</div>
 			<div>鈴木松子</div>
+		</div>
+		<br/>
+		<div>2blocksの表示</div>
+		<div class="2blocks">
+			<div>1つ目</div>
+			<div>2つ目</div>
+			<div>3つ目。項目が長い場合</div>
+			<div>4つ目</div>
+			<div>5つ目</div>
+			<div>6つ目。項目がものすごく長い場合</div>
 		</div>
 		<br/>
 		<br/>
@@ -42,8 +52,8 @@
 		<div class="3blocks">
 			<div>あいうえおかきくけこ</div>
 			<div>あいうえおかきくけこ</div>
-			<div>あいうえおかきくけこ</div>
-			<div>あいうえおかきくけこ</div>
+			<div>カキク</div>
+			<div>サ</div>
 			<div>あいうえおかきくけこ</div>
 			<div>あいうえおかきくけこ</div>
 		</div>

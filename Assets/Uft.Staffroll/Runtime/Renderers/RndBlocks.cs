@@ -1,5 +1,6 @@
 #nullable enable
 
+using TMPro;
 using UnityEngine;
 
 namespace Uft.Staffroll.Renderers
@@ -26,13 +27,17 @@ namespace Uft.Staffroll.Renderers
             var cols = casted.Cols;
             for (int i = 0; i < casted.Items.Count; i += cols)
             {
-                var row = RowFactory.CreateRowContainer(parent, y, ctx);
+                var spacing = cols == 2 ? ctx.TwoColumnGap : 0f;
+                var row = RowFactory.CreateRowContainer(parent, y, ctx, spacing);
 
                 for (int col = 0; col < cols; col++)
                 {
                     var text = (i + col) < casted.Items.Count ? casted.Items[i + col] : string.Empty;
                     var block = Object.Instantiate(this._blockPrototype, row);
-                    block.SetText(text, ctx.ResolveFont(casted.FontKey));
+                    var alignment = cols == 2
+                        ? (col == 0 ? TextAlignmentOptions.Right : TextAlignmentOptions.Left)
+                        : (TextAlignmentOptions?)null;
+                    block.SetText(text, ctx.ResolveFont(casted.FontKey), alignment);
                 }
 
                 y -= ctx.LineHeight;

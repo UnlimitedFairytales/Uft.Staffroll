@@ -9,7 +9,7 @@ namespace Uft.Staffroll.Renderers
     {
         /// <summary>HorizontalLayoutGroup を持つ行コンテナを生成して返す。</summary>
         /// <remarks>アンカー・ピボットは中央上</remarks>
-        internal static RectTransform CreateRowContainer(RectTransform parent, float anchoredY, StaffrollRenderContext ctx)
+        internal static RectTransform CreateRowContainer(RectTransform parent, float anchoredY, StaffrollRenderContext ctx, float spacing = 0f)
         {
             var go = new GameObject("Row", typeof(RectTransform));
             go.transform.SetParent(parent, false);
@@ -23,6 +23,7 @@ namespace Uft.Staffroll.Renderers
 
             var hlg = go.AddComponent<HorizontalLayoutGroup>();
             hlg.childAlignment = TextAnchor.MiddleCenter;
+            hlg.spacing = spacing;
             hlg.childControlWidth = true;
             hlg.childControlHeight = true;
             hlg.childForceExpandWidth = true;

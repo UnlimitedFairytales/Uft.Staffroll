@@ -22,6 +22,7 @@ namespace Uft.Staffroll
         [SerializeField] float _lineHeight = 48f;
         [SerializeField] float _brHeight   = 24f;
         [SerializeField] float _rowWidth   = 1200f;
+        [SerializeField] float _twoColumnGap = 48f;
 
         [Header("Font")]
         [SerializeField] TMP_FontAsset? _fontA;
@@ -122,6 +123,7 @@ namespace Uft.Staffroll
                 LineHeight = head.LineHeight ?? this._lineHeight,
                 BrHeight   = head.BrHeight  ?? this._brHeight,
                 RowWidth   = head.RowWidth  ?? this._rowWidth,
+                TwoColumnGap = this._twoColumnGap,
             };
             this._scrollSpeed = head.ScrollSpeed ?? this._scrollSpeed;
 

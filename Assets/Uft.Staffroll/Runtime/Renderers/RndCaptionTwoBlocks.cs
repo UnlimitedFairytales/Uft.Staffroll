@@ -1,5 +1,6 @@
 #nullable enable
 
+using TMPro;
 using UnityEngine;
 
 namespace Uft.Staffroll.Renderers
@@ -25,16 +26,16 @@ namespace Uft.Staffroll.Renderers
 
             for (int i = 0; i < casted.Items.Count; i++)
             {
-                var row = RowFactory.CreateRowContainer(parent, y, ctx);
+                var row = RowFactory.CreateRowContainer(parent, y, ctx, ctx.TwoColumnGap);
 
                 // 左列: 1行目のみキャプション、以降は空セル
                 var caption = Object.Instantiate(this._blockPrototype, row);
-                caption.SetText(i == 0 ? casted.Caption : string.Empty, ctx.ResolveFont(casted.FontKey));
+                caption.SetText(i == 0 ? casted.Caption : string.Empty, ctx.ResolveFont(casted.FontKey), TextAlignmentOptions.Right);
 
                 // 右列: アイテム
                 var text = casted.Items[i];
                 var block = Object.Instantiate(this._blockPrototype, row);
-                block.SetText(text, ctx.ResolveFont(casted.FontKey));
+                block.SetText(text, ctx.ResolveFont(casted.FontKey), TextAlignmentOptions.Left);
 
                 y -= ctx.LineHeight;
             }
