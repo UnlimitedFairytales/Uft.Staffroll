@@ -32,21 +32,21 @@ namespace Uft.Staffroll.Elements
                 foreach (var child in el.GetElementsIgnoreCase("div"))
                 {
                     if (child.GetAttrIgnoreCase("class").EqualsIgnoreCase("caption"))
-                        caption = child.Value;
+                        caption = child.InnerXml();
                     else
-                        items.Add(child.Value);
+                        items.Add(child.InnerXml());
                 }
                 return new CaptionTwoBlocksContent(caption, items, attrFont);
             }
 
-            return new BlocksContent(1, new List<string> { el.Value }, attrFont);
+            return new BlocksContent(1, new List<string> { el.InnerXml() }, attrFont);
         }
 
         protected virtual List<string> ParseChildren(XElement el)
         {
             var list = new List<string>(this._childrenCapacity);
             foreach (var child in el.GetElementsIgnoreCase("div"))
-                list.Add(child.Value);
+                list.Add(child.InnerXml());
             return list;
         }
     }
