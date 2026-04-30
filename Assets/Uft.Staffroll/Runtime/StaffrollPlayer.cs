@@ -18,7 +18,7 @@ namespace Uft.Staffroll
         [SerializeField] RndImg?   _imgPrototype;
 
         [Header("Layout")]
-        [SerializeField] float _fontSize   = 32f;
+        [SerializeField] float _fontSize   = 36f;
         [SerializeField] float _lineHeight = 48f;
         [SerializeField] float _brHeight   = 24f;
         [SerializeField] float _rowWidth   = 1200f;

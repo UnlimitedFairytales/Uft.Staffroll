@@ -118,10 +118,11 @@ MonoBehaviour:
   _contentRoot: {fileID: 2174982236057439005}
   _blockPrototype: {fileID: 847748016319536893, guid: 8036c37f8d21d2c42bf23ee1b9dc013d, type: 3}
   _imgPrototype: {fileID: 6416133602225075908, guid: d0feff4098da98f46b4ba24df7242039, type: 3}
-  _fontSize: 32
+  _fontSize: 36
   _lineHeight: 48
   _brHeight: 24
   _rowWidth: 1200
+  _twoColumnGap: 48
   _fontA: {fileID: 0}
   _fontB: {fileID: 0}
   _fontC: {fileID: 0}

@@ -37,7 +37,7 @@ namespace Uft.Staffroll.Renderers
                     var alignment = cols == 2
                         ? (col == 0 ? TextAlignmentOptions.Right : TextAlignmentOptions.Left)
                         : (TextAlignmentOptions?)null;
-                    block.SetText(text, ctx.ResolveFont(casted.FontKey), alignment);
+                    block.SetText(text, ctx.ResolveFont(casted.FontKey), alignment, ctx.FontSize);
                 }
 
                 y -= ctx.LineHeight;
