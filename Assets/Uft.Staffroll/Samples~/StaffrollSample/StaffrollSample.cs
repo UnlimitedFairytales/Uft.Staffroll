@@ -19,11 +19,11 @@ namespace Uft.Staffroll.Samples
 
             this._staffrollPlayer.onCompleted = () =>
             {
-                this._staffrollPlayer.Browse(this._xmlAsset.text);
+                this._staffrollPlayer.Browse(this._xmlAsset.text, null);
                 this._browseMode = true;
             };
 
-            this._staffrollPlayer.Play(this._xmlAsset.text);
+            this._staffrollPlayer.Play(this._xmlAsset.text, null);
         }
 
         void Update()

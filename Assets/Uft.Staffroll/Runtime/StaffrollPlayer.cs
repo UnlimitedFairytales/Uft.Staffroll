@@ -66,11 +66,11 @@ namespace Uft.Staffroll
             }
         }
 
-        public void Play(string xmlText)
+        public void Play(string xmlText, AssetLoadProxy? assetLoadProxy)
         {
             if (this._contentRoot == null) throw new UnassignedReferenceException(nameof(this._contentRoot));
 
-            this._totalContentHeight = this.BuildUI(xmlText);
+            this._totalContentHeight = this.BuildUI(xmlText, assetLoadProxy);
 
             var viewHeight = this.GetViewportHeight();
             this._contentRoot.anchoredPosition = new Vector2(0f, -viewHeight);
@@ -81,11 +81,11 @@ namespace Uft.Staffroll
         /// 手動スクロールモード。先頭要素の中央が画面中央に来る位置で停止する。<br/>
         /// <see cref="Scroll"/> で上下に移動できる。
         /// </summary>
-        public void Browse(string xmlText)
+        public void Browse(string xmlText, AssetLoadProxy? assetLoadProxy)
         {
             if (this._contentRoot == null) throw new UnassignedReferenceException(nameof(this._contentRoot));
 
-            this._totalContentHeight = this.BuildUI(xmlText);
+            this._totalContentHeight = this.BuildUI(xmlText, assetLoadProxy);
             this._contentRoot.anchoredPosition = new Vector2(0f, this.BrowseMinY());
         }
 
@@ -110,8 +110,16 @@ namespace Uft.Staffroll
         // 末尾要素の中央が画面中央になる anchoredPosition.y。コンテンツ全体高さ - 末尾要素の半分 - 画面中央までの距離
         float BrowseMaxY() => this._totalContentHeight - this._lastElementHeight * 0.5f - this.GetViewportHeight() * 0.5f;
 
-        float BuildUI(string xmlText)
+        float BuildUI(string xmlText, AssetLoadProxy? assetLoadProxy)
         {
+            foreach (var kvp in this._rendererMap)
+            {
+                if (kvp.Value is RndImg rndImg)
+                {
+                    rndImg.assetLoadProxy = assetLoadProxy;
+                }
+            }
+
             var (head, contents) = this._elementParser.Parse(xmlText);
 
             var ctx = new StaffrollRenderContext

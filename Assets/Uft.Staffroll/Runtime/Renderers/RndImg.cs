@@ -14,10 +14,13 @@ namespace Uft.Staffroll.Renderers
     {
         [SerializeField] Image? _image;
 
+        public AssetLoadProxy? assetLoadProxy;
+
         public float Render(IContent content, RectTransform parent, float y, StaffrollRenderContext ctx)
         {
             var src          = ((ImgContent)content).Src;
             var instantiated = Instantiate(this, parent);
+            instantiated.assetLoadProxy = this.assetLoadProxy; // Serialize外なため、手動で渡す
             var height       = instantiated.SetSprite(src, y);
             return y - height;
         }
@@ -26,7 +29,15 @@ namespace Uft.Staffroll.Renderers
         /// <returns>実際に占有した高さ</returns>
         protected virtual float SetSprite(string src, float anchoredY)
         {
-            var sprite = Resources.Load<Sprite>(src);
+            Sprite sprite;
+            if (this.assetLoadProxy != null)
+            {
+                sprite = assetLoadProxy.Load<Sprite>(src);
+            }
+            else
+            {
+                sprite = Resources.Load<Sprite>(src);
+            }
             if (sprite == null) throw new Exception($"Sprite not found in Resources: '{src}'");
             if (this._image == null) throw new UnassignedReferenceException(nameof(this._image));
 
